@@ -16,7 +16,7 @@ task :test => [:build] do
     abort "PhantomJS is not installed. Download from http://phantomjs.org"
   end
 
-  cmd = "phantomjs spec/lib/runner.coffee file://localhost/#{File.dirname(__FILE__)}/SpecRunner.html "
+  cmd = "phantomjs lib/runner.coffee file://localhost/#{File.dirname(__FILE__)}/SpecRunner.html "
   success = system(cmd)
 
   if success
@@ -30,5 +30,5 @@ end
 desc "Automatically run tests (Mac OS X only)"
 task :autotest do
   # https://github.com/alloy/kicker
-  system("kicker -e 'rake test'")
+  system("kicker -e 'rake'")
 end
