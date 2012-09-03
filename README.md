@@ -7,5 +7,7 @@ TODO:
 
   Setup
     phantomjs
+    gemset
+    bundle
     node
     npm coffee-script

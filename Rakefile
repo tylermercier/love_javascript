@@ -1,6 +1,4 @@
 require 'bundler/setup'
-require 'colored'
-require 'coffee-script'
 
 task :default => [:build]
 
