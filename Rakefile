@@ -4,8 +4,8 @@ task :default => [:build]
 
 desc "Compile coffeescript files to javascript"
 task :build do
-  sh "coffee -c -j 'all.js' -o build/ src/"
-  sh "coffee -c -j 'all_specs.js' -o build/ spec/"
+  sh "coffee -c -j 'all.js' -o public/javascripts/ src/"
+  sh "coffee -c -j 'all_specs.js' -o public/javascripts spec/"
 end
 
 desc "Run javascript tests"
@@ -14,7 +14,7 @@ task :test => [:build] do
     abort "PhantomJS is not installed. Download from http://phantomjs.org"
   end
 
-  cmd = "phantomjs lib/runner.coffee file://localhost/#{File.dirname(__FILE__)}/SpecRunner.html "
+  cmd = "phantomjs runner.coffee file://localhost/#{File.dirname(__FILE__)}/public/SpecRunner.html "
   success = system(cmd)
 
   if success

@@ -37,11 +37,6 @@ page.onError = (msg, trace) ->
   trace.forEach (item) ->
     console.log " #{item.file}:#{item.line}"
 
-# page.onInitialized = =>
-#   page.evaluate =>
-#     window.onload = =>
-#       jasmine.getEnv().addReporter(new jasmine.ConsoleReporter())
-
 # open test page and wait for completion
 page.open address, (status) ->
   if status != 'success'
