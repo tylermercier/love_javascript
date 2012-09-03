@@ -1,6 +1,6 @@
 window.Gallery ?= {}
 
-class Song
+class window.Gallery.Song
   constructor: (@artist, @title) ->
     @likes = 0
 
@@ -9,5 +9,3 @@ class Song
 
   newFeature: ->
     throw new Error "not yet implemented"
-
-window.Gallery.Song = Song

@@ -2,7 +2,7 @@
 
 window.Gallery ?= {}
 
-class Player
+class window.Gallery.Player
   play: (song) ->
     @currentSong = song
     @playing = true
@@ -16,5 +16,3 @@ class Player
 
   favorite: ->
     @currentSong.like()
-
-window.Gallery.Player = Player

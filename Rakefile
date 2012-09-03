@@ -5,7 +5,7 @@ task :default => [:build]
 desc "Compile coffeescript files to javascript"
 task :build do
   sh "coffee -c -j 'all.js' -o public/javascripts/ src/"
-  sh "coffee -c -j 'all_specs.js' -o public/javascripts spec/"
+  sh "coffee -c -j 'all_specs.js' -o public/javascripts specs/"
 end
 
 desc "Run javascript tests"
@@ -28,5 +28,5 @@ end
 desc "Automatically run tests (Mac OS X only)"
 task :autotest do
   # https://github.com/alloy/kicker
-  system("kicker -e 'rake'")
+  system("kicker -e 'rake test'")
 end

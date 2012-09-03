@@ -1,7 +1,5 @@
-#=require models/player
-#=require models/song
-
 describe "Player", =>
+
   beforeEach =>
     @player = new window.Gallery.Player()
     @song = new window.Gallery.Song('Dan Mangan', 'Robots')

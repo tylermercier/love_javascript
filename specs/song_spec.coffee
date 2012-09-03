@@ -1,5 +1,3 @@
-#=require models/song
-
 describe "Song", =>
 
   beforeEach =>
