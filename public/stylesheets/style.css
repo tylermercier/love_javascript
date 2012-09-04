@@ -1,0 +1,67 @@
+body{
+  margin: 0 auto;
+}
+
+figure img {
+  -webkit-box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.7);
+  -moz-box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.7);
+  box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.7);
+}
+
+.container header {
+  padding: 5%;
+}
+
+ul.pager {
+  padding: 0 48px 0 40px;
+}
+
+header.masthead h1{
+  font-size: 50px;
+  line-height: 50px;
+}
+
+.container {
+  width: 80%;
+  padding-top: 20px;
+}
+
+.photos {  
+  width: 100%;
+}
+
+.tags-container{
+  width: 60%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.photo {
+  width: 33%;
+  float: left;
+}
+
+.tags a{
+  padding: 5px;
+}
+
+#tag-info {
+  display: none;
+  font-size: 20px;
+  line-height: 20px;
+  padding-left: 40px;
+  margin-bottom: 15px;
+}
+
+#tag-name{
+  color: #D14;
+}
+ul.left, ul.right{
+  width: 20%;
+  float: left;
+}
+
+#previous-tag, #next-tag{
+  padding: 0 20px;
+  font-weight: bold;
+}

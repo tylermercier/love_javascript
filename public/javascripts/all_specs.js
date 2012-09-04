@@ -31,7 +31,7 @@
       beforeEach(function() {
         return _this.player.play(_this.song);
       });
-      it('should be set playing to true', function() {
+      it('should be set playing to be true', function() {
         _this.player.pause();
         _this.player.resume();
         return expect(_this.player.playing).toBe(true);
