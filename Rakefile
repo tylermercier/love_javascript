@@ -4,6 +4,10 @@ task :default => [:build]
 
 desc "Compile coffeescript files to javascript"
 task :build do
+  unless system("which coffee > /dev/null 2>&1")
+    abort "CoffeeScript compiler is not installed. Download from http://coffeescript.org/"
+  end
+
   sh "coffee -c -j 'all.js' -o public/javascripts/ src/"
   sh "coffee -c -j 'all_specs.js' -o public/javascripts specs/"
 end
@@ -17,12 +21,7 @@ task :test => [:build] do
   cmd = "phantomjs runner.coffee file://localhost/#{File.dirname(__FILE__)}/public/SpecRunner.html "
   success = system(cmd)
 
-  if success
-    #puts "PASS"
-  else
-    #puts "FAIL"
-    exit(1)
-  end
+  exit(1) unless success
 end
 
 desc "Automatically run tests (Mac OS X only)"
