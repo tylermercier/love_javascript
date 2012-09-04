@@ -1,5 +1,3 @@
-#=require models/song
-
 window.Gallery ?= {}
 
 class window.Gallery.Player

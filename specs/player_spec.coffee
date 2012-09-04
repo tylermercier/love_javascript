@@ -27,7 +27,7 @@ describe "Player", =>
     beforeEach =>
       @player.play(@song)
 
-    it 'should be set playing to true', =>
+    it 'should be set playing to be true', =>
       @player.pause()
       @player.resume()
 
