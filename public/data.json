@@ -1,0 +1,11 @@
+{
+  products: [
+    {
+      id: 1,
+      name: "product1",
+      price: "4.50",
+      image: "product1.jpg"
+      tags: []
+    }
+  ]
+}
