@@ -15,7 +15,7 @@
         return expect(_this.player.currentSong).toBe(_this.song);
       });
       return it('should set playing to true', function() {
-        return expect(_this.player.playing).toBe(true);
+        return expect(_this.player.playing).toBe(false);
       });
     });
     describe('.pause', function() {
