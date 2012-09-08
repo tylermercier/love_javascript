@@ -12,7 +12,7 @@ describe "Player", =>
       expect(@player.currentSong).toBe(@song)
 
     it 'should set playing to true', =>
-      expect(@player.playing).toBe(true)
+      expect(@player.playing).toBe(false)
 
   describe '.pause', =>
     beforeEach =>
