@@ -24,6 +24,18 @@ task :test => [:build] do
   exit(1) unless success
 end
 
+desc "Run javascript tests on CI"
+task :ci do
+  unless system("which phantomjs > /dev/null 2>&1")
+    abort "PhantomJS is not installed. Download from http://phantomjs.org"
+  end
+
+  cmd = "phantomjs runner.coffee file://localhost/#{File.dirname(__FILE__)}/public/SpecRunner.html "
+  success = system(cmd)
+
+  exit(1) unless success
+end
+
 desc "Automatically run tests (Mac OS X only)"
 task :autotest do
   # https://github.com/alloy/kicker
