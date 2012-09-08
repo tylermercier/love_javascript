@@ -14,14 +14,7 @@ end
 
 desc "Run javascript tests"
 task :test => [:build] do
-  unless system("which phantomjs > /dev/null 2>&1")
-    abort "PhantomJS is not installed. Download from http://phantomjs.org"
-  end
-
-  cmd = "phantomjs runner.coffee file://localhost/#{File.dirname(__FILE__)}/public/SpecRunner.html "
-  success = system(cmd)
-
-  exit(1) unless success
+  Rake::Task['ci'].invoke
 end
 
 desc "Run javascript tests on CI"
