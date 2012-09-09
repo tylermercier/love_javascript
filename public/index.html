@@ -8,10 +8,12 @@
   <script type="text/javascript" src="javascripts/lib/jquery-1.8.1.js"></script>
 </head>
 <body>
-  <h1>OneWordTShirts.com</h1>
+
+  <div class="page-header">
+    <h1>OneWordTShirts.com <small>#1 in one word</small></h1>
+  </div>
 
   <div class="products-list">
-    <h2>Browse One Word T Shirts</h2>
 
     <div class="search-box">
       <form class="navbar-search pull-left">
@@ -22,24 +24,27 @@
 
     <div class="clearfix"></div>
 
-    <div class="selected-products">
+    <div class="selected-products row-fluid">
 
     </div>
 
   </div>
 
   <script id="product-template" type="text/x-handlebars-template">
-    <ol>
+    <ol class="thumbnails">
     {{#each this}}
-      <li>
-      <div class="product">
-        <div class="image">
-          {{image}}
-        </div>
-        <div class="info">
-          <div class="title">{{title}}</div>
-          <div class="price">${{price}}</div>
-          <div class="description">{{description}}</div>
+      <li class="span3">
+      <div class="product thumbnail">
+        <img src="images/{{image}}"/>
+
+        <div class="info caption">
+          <h3>{{title}}</h3>
+          <p>${{price}}</p>
+          <p>{{description}}</p>
+          <p>
+            <a href="#" class="btn btn-primary">Buy</a>
+            <a href="#" class="btn">Like</a>
+          </p>
         </div>
       </div>
       </li>
