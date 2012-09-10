@@ -9,10 +9,10 @@ task :build do
   end
 
   sh "coffee -c -j 'all.js' -o public/javascripts/ src/"
-  puts "SOURCE FILES COMPILED"
+  #print "\nSOURCE FILES COMPILED\n\n"
 
   sh "coffee -c -j 'all_specs.js' -o public/javascripts specs/"
-  puts "SPEC FILES COMPILED\n"
+  #print "\nSPEC FILES COMPILED\n\n"
 end
 
 desc "Run javascript tests"
@@ -26,8 +26,8 @@ task :ci do
     abort "PhantomJS is not installed. Download from http://phantomjs.org"
   end
 
-  cmd = "phantomjs runner.coffee file://localhost/#{File.dirname(__FILE__)}/public/SpecRunner.html "
-  success = system(cmd)
+  run_phantomjs = "phantomjs runner.coffee file://localhost/#{File.dirname(__FILE__)}/public/SpecRunner.html "
+  success = system(run_phantomjs)
 
   exit(1) unless success
 end

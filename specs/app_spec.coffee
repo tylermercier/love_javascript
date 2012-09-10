@@ -2,8 +2,9 @@ describe "App", =>
   beforeEach =>
     @app = new window.Store.App
       el: $('<div/>')
-      template: (data) -> data
-      catalog: {get: -> []}
+      template: (data) -> data # stub
+      catalog:
+        get: -> # stub
 
   describe '.load', =>
     it 'should load the catalog', =>

@@ -10,9 +10,7 @@
           return data;
         },
         catalog: {
-          get: function() {
-            return [];
-          }
+          get: function() {}
         }
       });
     });
