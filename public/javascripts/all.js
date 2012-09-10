@@ -34,12 +34,6 @@
 
   })();
 
-  $(document).ready(function() {
-    var template;
-    template = Handlebars.compile($('#product-template').html());
-    return $('.selected-products').html(template(productList));
-  });
-
   if ((_ref1 = window.Gallery) == null) {
     window.Gallery = {};
   }

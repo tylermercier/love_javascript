@@ -6,7 +6,7 @@ var productList = [
     price: 25
   },
   {
-    image: 'Geek.png',
+    image: 'LoveJS.png',
     title: 'Geek',
     description: 'Geeks rule the world, like it or not :)',
     price: 25
@@ -18,7 +18,7 @@ var productList = [
     price: 25
   },
   {
-    image: 'Geek.png',
+    image: 'LoveJS.png',
     title: 'Geek',
     description: 'Geeks rule the world, like it or not :)',
     price: 25
@@ -30,7 +30,7 @@ var productList = [
     price: 25
   },
   {
-    image: 'Geek.png',
+    image: 'LoveJS.png',
     title: 'Geek',
     description: 'Geeks rule the world, like it or not :)',
     price: 25

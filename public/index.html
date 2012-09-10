@@ -8,48 +8,53 @@
   <script type="text/javascript" src="javascripts/lib/jquery-1.8.1.js"></script>
 </head>
 <body>
-
-  <div class="page-header">
-    <h1>OneWordTShirts.com <small>#1 in one word</small></h1>
-  </div>
-
-  <div class="products-list">
-
-    <div class="search-box">
-      <form class="navbar-search pull-left">
-        <input type="text" class="search-query" placeholder="Search">
-        <button type="submit" class="btn">Go</button>
-      </form>
+  <div class="container">
+    <div class="page-header">
+      <h1>OneWordTShirts.com <small>#1 in one word</small></h1>
     </div>
 
-    <div class="clearfix"></div>
-
-    <div class="selected-products row-fluid">
-
+    <div class="navbar">
+      <div class="navbar-inner">
+        <form class="navbar-search pull-left">
+          <input type="text" class="search-query" placeholder="Search">
+        </form>
+      </div>
     </div>
 
+    <div class="products-list">
+
+      <div class="search-box">
+
+      </div>
+
+      <div class="clearfix"></div>
+
+      <div class="selected-products row-fluid">
+
+      </div>
+
+    </div>
   </div>
 
   <script id="product-template" type="text/x-handlebars-template">
-    <ol class="thumbnails">
+    <ul class="thumbnails">
     {{#each this}}
-      <li class="span3">
-      <div class="product thumbnail">
-        <img src="images/{{image}}"/>
+      <li class="span2">
+        <div class="product thumbnail">
+          <img src="images/{{image}}"/>
 
-        <div class="info caption">
-          <h3>{{title}}</h3>
-          <p>${{price}}</p>
-          <p>{{description}}</p>
-          <p>
-            <a href="#" class="btn btn-primary">Buy</a>
-            <a href="#" class="btn">Like</a>
-          </p>
+          <div class="info caption">
+            <h3>{{title}}</h3>
+            <p>$  {{price}}</p>
+            <p>{{description}}</p>
+            <p>
+              <a href="#" class="btn btn-primary">Add to Cart</a>
+            </p>
+          </div>
         </div>
-      </div>
       </li>
     {{/each}}
-    </ol>
+    </ul>
   </script>
 
   <script type="text/javascript" src="stylesheets/bootstrap/js/bootstrap.js"></script>

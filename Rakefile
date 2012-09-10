@@ -30,7 +30,7 @@ task :ci do
 end
 
 desc "Automatically run tests (Mac OS X only)"
-task :autotest do
+task :watch do
   # https://github.com/alloy/kicker
-  system("kicker -e 'rake test'")
+  system("kicker -e 'rake'")
 end
