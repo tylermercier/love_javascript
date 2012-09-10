@@ -2,71 +2,31 @@
 (function() {
   var _this = this;
 
-  describe("Player", function() {
+  describe("App", function() {
     beforeEach(function() {
-      _this.player = new window.Gallery.Player();
-      return _this.song = new window.Gallery.Song('Dan Mangan', 'Robots');
-    });
-    describe('.play', function() {
-      beforeEach(function() {
-        return _this.player.play(_this.song);
-      });
-      it('should set the current song', function() {
-        return expect(_this.player.currentSong).toBe(_this.song);
-      });
-      return it('should set playing to true', function() {
-        return expect(_this.player.playing).toBe(true);
+      return _this.app = new window.Store.App({
+        el: $('<div/>'),
+        template: function(data) {
+          return data;
+        },
+        catalog: {
+          get: function() {
+            return [];
+          }
+        }
       });
     });
-    describe('.pause', function() {
-      beforeEach(function() {
-        return _this.player.play(_this.song);
-      });
-      return it('should set playing to false', function() {
-        _this.player.pause();
-        return expect(_this.player.playing).toBe(false);
+    describe('.load', function() {
+      return it('should load the catalog', function() {
+        spyOn(_this.app.catalog, 'get');
+        _this.app.load();
+        return expect(_this.app.catalog.get).toHaveBeenCalled();
       });
     });
-    describe('.resume', function() {
-      beforeEach(function() {
-        return _this.player.play(_this.song);
-      });
-      it('should be set playing to be true', function() {
-        _this.player.pause();
-        _this.player.resume();
-        return expect(_this.player.playing).toBe(true);
-      });
-      return it('should throw song is already playing error when song already playing', function() {
-        return expect(function() {
-          return _this.player.resume();
-        }).toThrow(new Error("song is already playing"));
-      });
-    });
-    return describe('.favorite', function() {
-      return it('should add a like to the song', function() {
-        spyOn(_this.song, 'like');
-        _this.player.play(_this.song);
-        _this.player.favorite();
-        return expect(_this.song.like).toHaveBeenCalled();
-      });
-    });
-  });
-
-  describe("Song", function() {
-    beforeEach(function() {
-      return _this.song = new window.Gallery.Song('Dan Mangan', 'Robots');
-    });
-    describe('.like', function() {
-      return it('should set the current song', function() {
-        _this.song.like();
-        return expect(_this.song.likes).toBe(1);
-      });
-    });
-    return describe('.newFeature', function() {
-      return it('should throw not implemented error', function() {
-        return expect(function() {
-          return _this.song.newFeature();
-        }).toThrow(new Error("not yet implemented"));
+    return describe('.render', function() {
+      return it('should display the results in the view', function() {
+        _this.app.render('hello world');
+        return expect(_this.app.el.html()).toBe('hello world');
       });
     });
   });

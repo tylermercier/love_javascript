@@ -9,7 +9,10 @@ task :build do
   end
 
   sh "coffee -c -j 'all.js' -o public/javascripts/ src/"
+  puts "SOURCE FILES COMPILED"
+
   sh "coffee -c -j 'all_specs.js' -o public/javascripts specs/"
+  puts "SPEC FILES COMPILED\n"
 end
 
 desc "Run javascript tests"
@@ -32,5 +35,5 @@ end
 desc "Automatically run tests (Mac OS X only)"
 task :watch do
   # https://github.com/alloy/kicker
-  system("kicker -e 'rake'")
+  system("kicker -e 'rake test'")
 end
