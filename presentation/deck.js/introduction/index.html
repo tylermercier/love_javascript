@@ -66,19 +66,47 @@
 
 <section class="slide" id="why-javascript-testing">
   <h2>Why test javascript?</h2>
-  <p><a href="https://github.com/languages" target="_blank">Popular</a></p>
-  <p>Ubiquitous</p>
-  <p>Improved code</p>
-  <p>Automated verification (fast & consistent)</p>
-  <p>Documents functionality</p>
-  <p>Uncover bugs before QA</p>
+  <ul>
+    <li class="slide">
+      <h3>Popular - <a href="https://github.com/languages" target="_blank">link</a></h3>
+    </li>
+    <li class="slide">
+      <h3>Ubiquitous</h3>
+    </li>
+    <li class="slide">
+      <h3>Improves code quality</h3>
+    </li>
+    <li class="slide">
+      <h3>Automated verification</h3>
+    </li>
+    <li class="slide">
+      <h3>Documents functionality</h3>
+    </li>
+    <li class="slide">
+      <h3>Uncover bugs before QA</h3>
+    </li>
+  </ul>
 </section>
 
 <section class="slide" id="javascript-testing">
   <h2>Javascript Testing</h2>
-  <p>What kind of tests should I write?</p>
-  <p>Test up to, but not in the DOM</p>
-  <p>Same rules apply</p>
+  <ul>
+    <li class="slide">
+      <h3>Don't pollute the global namespace</h3>
+    </li>
+    <li class="slide">
+      <h3>Favor good reusable code</h3>
+    </li>
+    <li class="slide">
+      <h3>Avoid saving state in the DOM</h3>
+    </li>
+    <li class="slide">
+      <h3>Stay out of the DOM</h3>
+    </li>
+    <li class="slide">
+      <h3>General unit testing applies</h3>
+    </li>
+  </ul>
 </section>
 
 <section class="slide" id="journey-jasmine">
@@ -91,45 +119,61 @@
 <section class="slide" id="intro-to-jasmine">
 	<h2>Jasmine</h2>
   <ul>
-    <li>
-      Behavior-Driven Development framework
+    <li class="slide">
+      <h3>Behavior-Driven Development framework</h3>
     </li>
-    <li>
-      No JavaScript dependencies
+    <li class="slide">
+      <h3>No JavaScript dependencies</h3>
     </li>
-    <li>
-      Does not require a DOM
+    <li class="slide">
+      <h3>Does not require a DOM</h3>
     </li>
-    <li>
-      Clean API
-    </li>
-  </ul>
-</section>
-
-<section class="slide" id="jasmine-features">
-  <h2>Jasmine Features</h2>
-  <ul>
-    <li>
-      Large set of matchers
-    </li>
-    <li>
-      Built in mocking (Spies)
-    </li>
-    <li>
-      Mock the Javascript clock (setTimeout or setInterval)
-    </li>
-    <li>
-      Asynchronous Support
-    </li>
-    <li>
-      CI Reporting
+    <li class="slide">
+      <h3>Clean API</h3>
     </li>
   </ul>
 </section>
 
 <section class="slide" id="intro-to-jasmine">
   <h2>Jasmine Example</h2>
-  <p>Song/Player demo</p>
+  <p>Basic specification</p>
+  <div id="code" class="code" name="code" mode="javascript" style="display: none;">describe("Player", function() {
+    var player, song;
+
+    beforeEach(function() {
+      player = new window.Player();
+      song = new window.Song('Dan Mangan', 'Robots');
+    });
+
+    describe('.play', function() {
+      it('should set the current song', function() {
+        player.play(song);
+
+        expect(player.currentSong).toBe(song);
+      });
+    });
+});</div>
+</section>
+
+<section class="slide" id="jasmine-features">
+  <h2>Jasmine Features</h2>
+  <ul>
+    <li class="slide">
+      <h3>Large set of matchers</h3>
+    </li>
+    <li class="slide">
+      <h3>Built in test doubles</h3>
+    </li>
+    <li class="slide">
+      <h3>Mock the Javascript clock</h3>
+    </li>
+    <li class="slide">
+      <h3>Asynchronous Support</h3>
+    </li>
+    <li class="slide">
+      <h3>CI Reporting</h3>
+    </li>
+  </ul>
 </section>
 
 <section class="slide" id="intro-to-ci">
@@ -147,30 +191,74 @@
 
 <section class="slide" id="good-javascript">
   <h2>Good Javascript</h2>
-  <p>Avoid globals with Namespaces</p>
-  <p>Modules for statics</p>
-  <p>Object Oriented</p>
+  <ul>
+    <li class="slide">
+      <h3>Namespace your code</h3>
+    </li>
+    <li class="slide">
+      <h3>Module pattern for singletons</h3>
+    </li>
+    <li class="slide">
+      <h3>Object Oriented</h3>
+    </li>
+  </ul>
 </section>
 
 <section class="slide" id="coffeescript-benefits">
   <h2>CoffeeScript Benefits</h2>
-  <p>Terse</p>
-  <p>Closure scoping</p>
-  <p>OO support</p>
-  <p>Lint</p>
+  <ul>
+    <li class="slide">
+      <h3>Terse</h3>
+    </li>
+    <li class="slide">
+      <h3>Closure scoping</h3>
+    </li>
+    <li class="slide">
+      <h3>Object Oriented support</h3>
+    </li>
+    <li class="slide">
+      <h3>Private by default</h3>
+    </li>
+    <li class="slide">
+      <h3>Lint</h3>
+    </li>
+  </ul>
 </section>
 
-<section class="slide" id="coffeescript-benefits">
+<section class="slide" id="coffeescript-drawbacks">
   <h2>CoffeeScript Drawbacks</h2>
-  <p>Limited sourcemap support (debugging)</p>
-  <p>Compile step</p>
-  <p>Learn another language</p>
+  <ul>
+    <li class="slide">
+      <h3>Limited sourcemap support</h3>
+    </li>
+    <li class="slide">
+      <h3>Compile step</h3>
+    </li>
+    <li class="slide">
+      <h3>Learn another language</h3>
+    </li>
+  </ul>
+</section>
+
+<section class="slide" id="coffeescript-example">
+  <h2>Jasmine CoffeeScript Example</h2>
+  <p>Basic specification</p>
+  <div id="code" class="code" name="code" mode="javascript" style="display: none;">describe "Player", =&gt
+  beforeEach =>
+    @player = new window.Player()
+    @song = new window.Song('Dan Mangan', 'Robots')
+
+  describe '.play', =>
+    it('should set the current song', =>
+      @player.play(@song)
+
+      expect(@player.currentSong).toBe(@song)</div>
 </section>
 
 <section class="slide" id="coffeescript-demo">
   <h2>CoffeeScript</h2>
   <div>
-    <a href="http://js2coffee.org/" target="_blank">JS2Coffee</a>
+    <h3><a href="http://js2coffee.org/" target="_blank">JS2Coffee</a></h3>
   </div>
 </section>
 
@@ -184,15 +272,17 @@
 <section class="slide" id="live-demo">
   <h2>Live Demo</h2>
   <div>
-    <a href="file://localhost/Users/Thoughtworks/Documents/github/love_javascript/public/index.html" target="_blank">Live Demo</a>
+    <h3><a href="file://localhost/Users/Thoughtworks/Documents/github/love_javascript/public/index.html" target="_blank">App</a></h3>
   </div>
 </section>
 
 <section class="slide" id="journey-summary">
   <h2>Summary</h2>
-  <div>
-    <img src="../images/journey_summary.png" alt="mindmap">
-  </div>
+  <ul>
+    <li class="slide">
+      <h3>TODO</h3>
+    </li>
+  </ul>
 </section>
 
 <section class="slide" id="end-slide">

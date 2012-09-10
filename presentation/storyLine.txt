@@ -1,76 +1,71 @@
-Gallery Introduction (5 mins/Sohan)
-  - example problem
-  - focus on code, simple problem
-  - domain stretched to introduce complexity
-  - goals
-    - gallery with pagination
-  - similar
-    - search
-    - tablular data
+Intro
 
-Code Introduction (5 mins/Tyler)
-  - discuss wireframes
-    - images
-    - captions
-    - title
-    - buttons
-  - explain functionality
-    - display images
-    - paging
-    - tags
-  - pre-code
-    - explain data source
-  - v1.1 html
-    - relate elements back to wireframes
-    - explain template
-  - v1.1 javascript
-    - global jQuery display element
-    - global page state
-    - display function
+Why test javascript
+  - Ubiquitous
+    - Pretty much always have to work with javascript in a web project
+  - Popular
+    - Most popular language on github
+  - Improved code
+    - Same practices as any other piece of code, same benefits apply
+  - Automated verification
+    - Fast & consistent verification, it is consistent right?
+  - Documents functionality
+    - Great source of expected code behavior for the next developer
+  - Uncover bugs before QA
+    - Helps you remove bugs before you even commit
 
-Demo Version 1 (1 min)
-  - Show working version
-  - Stop for questions
+Javascript testing
+  - Don't pollute the global namespace
+    - Use Javascript namespaces
+  - Favor good reusable code
+    - Module pattern for singletons, classes for objects
+  - Avoid saving state in the DOM
+    - Path to madness
+  - Stay out of the DOM
+    - If you don't need to do it in the DOM, don't
+  - General unit testing applies
+    - Everything that applies to your primary language!
+    - Dependency inversion
+    - Good OO practices such as, Single responsiblity principle & Low coupling
 
-New Feature (2 mins/Sohan)
-  - boss likes tagging
-  - problematic with global state
+Jasmine
+  - Behavior-Driven Development framework
+    - BDD is like TDD, but more natural
+  - No JavaScript dependencies
+    - Just jasmine
+  - Does not require a DOM
+    - Works on NodeJS, if you are into that sort of thing
+  - Clean API
+    - Pivotal Labs did a really good job building jasmine
 
-Module Pattern (8 mins/Sohan)
-  - discuss patterns purpose
-  - walkthrough v2 javascript [SPLIT INTO TWO PARTS?]
-    - object creation
-    - dependency passing
-    - new button events (data attributes)
-  - show working demo
-    - show data attributes
+Jasmine Example
+  - Openning 'describe' block defines system under test
+  - 'beforeEach' is creating two objects needed within the test
+  - Next 'describe' block defines method under test
+  - 'it' block defines behavior
+  - 'expect' is the verification
 
-Prototype Introduction (4 mins/Tyler)
-  - switch to slides
-  - JavaScript is a prototype-based scripting language that is dynamic, weakly typed and has first-class functions. It is a multi-paradigm language, supporting object-oriented, imperative, and functional programming styles.
+Jasmine Features
+  - Large set of matchers
+    - equality, regex, null, undefined, contains
+  - Built in test doubles
+    - Jasmine’s test doubles are called spies
+    - A spy can stub any function and tracks calls to it and all arguments
+  - Mock the Javascript clock
+    - Great for things like setTimeout or setInterval
+  - Asynchronous Support
+    - The waitsFor block takes a latch function, a failure message, and a timeout.
+    - It does come up, so this is an important feature
+  - CI Reporting
+    - We added a custom reporter for todays demonstration
 
-Code (6 mins/Tyler)
-  - discuss prototype purpose
-    - multiple instances
-    - single functions definition in memory
-    - cleaner object creation
-    - taking advantage of prototypical inheritence
-  - walkthrough v3 javascript
-    - dependencies
-    - show tagging events
-    - multiple instance support
-  - walkthrough prototype structure
-    - function as constructor
-    - prototype on function
+TravisCI
+  - TODO
 
-Namespace Example (2 mins/Tyler)
-  - cleanup class definitions
-  - intent of Gallery object
-  - no big change, just another scope trick
-
-What was covered (5 mins)
-  - remove global state
-  - better scope handling
-  - state tricks (data attributes)
-  - object creation patterns (module/class)
-  - namespacing
+Good Javascript
+  - Namespace your code
+    - Avoid polluting global namespace, i.e. window
+  - Use Module pattern for singletons
+    - Well documented and used pattern
+  - Use Object Oriented practices elsewhere
+    - Many different flavors
