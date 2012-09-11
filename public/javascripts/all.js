@@ -9,9 +9,14 @@
   window.Store.App = (function() {
 
     function App(options) {
+      var _this = this;
       this.el = options.el;
       this.template = options.template;
       this.catalog = options.catalog;
+      this.searchBox = options.searchBox;
+      this.searchBox.bind('keyup', function() {
+        return _this.filterCatalog(_this.searchBox.val());
+      });
     }
 
     App.prototype.load = function() {
@@ -22,6 +27,22 @@
 
     App.prototype.render = function(data) {
       return this.el.html(this.template(data));
+    };
+
+    App.prototype.filterCatalog = function(textToSearch) {
+      var matchedProducts, products,
+        _this = this;
+      products = this.catalog.get();
+      matchedProducts = _.select(products, function(product) {
+        return _this.isMatch(product, textToSearch);
+      });
+      return this.render(matchedProducts);
+    };
+
+    App.prototype.isMatch = function(product, textToSearch) {
+      var lowerCasedTextToSearch;
+      lowerCasedTextToSearch = textToSearch.toLocaleLowerCase();
+      return product.title.toLocaleLowerCase().indexOf(lowerCasedTextToSearch) >= 0 || product.description.toLocaleLowerCase().indexOf(lowerCasedTextToSearch) >= 0;
     };
 
     return App;

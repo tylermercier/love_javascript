@@ -11,7 +11,8 @@
         },
         catalog: {
           get: function() {}
-        }
+        },
+        searchBox: $('<input/>')
       });
     });
     describe('.load', function() {
@@ -21,11 +22,30 @@
         return expect(_this.app.catalog.get).toHaveBeenCalled();
       });
     });
-    return describe('.render', function() {
+    describe('.render', function() {
       return it('should display the results in the view', function() {
         _this.app.render('hello world');
         return expect(_this.app.el.html()).toBe('hello world');
       });
+    });
+    return describe('isMatch', function() {
+      it('should return true when title contains the text', function() {
+        var match;
+        match = _this.app.isMatch({
+          title: 'Google'
+        }, 'Google');
+        return expect(match).toBe(true);
+      });
+      it('should return true when title contains the text in a different case', function() {
+        var match;
+        match = _this.app.isMatch({
+          title: 'Google'
+        }, 'gooGLe');
+        return expect(match).toBe(true);
+      });
+      xit('should return true when description contains the text', function() {});
+      xit('should return true when description contains the text in a different case', function() {});
+      return xit('should return false when neither title nor description contains the text', function() {});
     });
   });
 

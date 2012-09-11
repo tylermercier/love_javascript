@@ -32,7 +32,8 @@
       window.app = new window.Store.App({
         el: $('.selected-products'),
         template: Handlebars.compile($('#product-template').html()),
-        catalog: window.Store.catalog
+        catalog: window.Store.catalog,
+        searchBox: $('.search-query')
       });
       window.app.load();
     });

@@ -5,6 +5,10 @@ class window.Store.App
     @el = options.el
     @template = options.template
     @catalog = options.catalog
+    @searchBox = options.searchBox
+
+    @searchBox.bind 'keyup', =>
+      @filterCatalog(@searchBox.val())
 
   load: ->
     data = @catalog.get()
@@ -12,6 +16,19 @@ class window.Store.App
 
   render: (data) ->
     @el.html(@template(data))
+
+  filterCatalog: (textToSearch)->
+    products = @catalog.get()
+    matchedProducts = _.select products, (product) => @isMatch(product, textToSearch)
+
+    @render(matchedProducts)
+
+  isMatch: (product, textToSearch)->
+    lowerCasedTextToSearch = textToSearch.toLocaleLowerCase()
+
+    product.title.toLocaleLowerCase().indexOf(lowerCasedTextToSearch) >= 0 ||
+    product.description.toLocaleLowerCase().indexOf(lowerCasedTextToSearch) >= 0
+
 
 window.Store.catalog =
   get: ->
