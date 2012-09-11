@@ -34,55 +34,72 @@
         _this = this;
       products = this.catalog.get();
       matchedProducts = _.select(products, function(product) {
-        return _this.isMatch(product, textToSearch);
+        return product.isMatch(textToSearch);
       });
       return this.render(matchedProducts);
-    };
-
-    App.prototype.isMatch = function(product, textToSearch) {
-      var lowerCasedTextToSearch;
-      lowerCasedTextToSearch = textToSearch.toLocaleLowerCase();
-      return product.title.toLocaleLowerCase().indexOf(lowerCasedTextToSearch) >= 0 || product.description.toLocaleLowerCase().indexOf(lowerCasedTextToSearch) >= 0;
     };
 
     return App;
 
   })();
 
+  window.Store.Product = (function() {
+
+    function Product(info) {
+      this.image = info.image;
+      this.title = info.title;
+      this.description = info.description;
+      this.price = info.price;
+    }
+
+    Product.prototype.containsText = function(string, textToSearch) {
+      return string && string.toLocaleLowerCase().indexOf(textToSearch) >= 0;
+    };
+
+    Product.prototype.isMatch = function(textToSearch) {
+      var lowerCasedTextToSearch;
+      lowerCasedTextToSearch = textToSearch.toLocaleLowerCase();
+      return this.containsText(this.title, lowerCasedTextToSearch) || this.containsText(this.description, lowerCasedTextToSearch);
+    };
+
+    return Product;
+
+  })();
+
   window.Store.catalog = {
     get: function() {
       return [
-        {
+        new window.Store.Product({
           image: 'LoveJS.png',
           title: 'LoveJS',
           description: 'For programmers that love Javascript!',
           price: 25
-        }, {
+        }), new window.Store.Product({
           image: 'LoveJS.png',
           title: 'Geek',
           description: 'Geeks rule the world like it or not :)',
           price: 25
-        }, {
+        }), new window.Store.Product({
           image: 'LoveJS.png',
           title: 'LoveJS',
           description: 'For programmers that love Javascript!',
           price: 25
-        }, {
+        }), new window.Store.Product({
           image: 'LoveJS.png',
           title: 'Geek',
           description: 'Geeks rule the world like it or not :)',
           price: 25
-        }, {
+        }), new window.Store.Product({
           image: 'LoveJS.png',
           title: 'LoveJS',
           description: 'For programmers that love Javascript!',
           price: 25
-        }, {
+        }), new window.Store.Product({
           image: 'LoveJS.png',
           title: 'Geek',
           description: 'Geeks rule the world like it or not :)',
           price: 25
-        }
+        })
       ];
     }
   };

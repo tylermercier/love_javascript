@@ -36,45 +36,52 @@
         return expect(_this.app.filterCatalog).toHaveBeenCalledWith('gaga');
       });
     });
-    describe('.filterCatalog', function() {
+    return describe('.filterCatalog', function() {
       return it('should render the matched products given the search text', function() {
-        spyOn(_this.app.catalog, 'get').andReturn([
-          {
-            title: 'Apple'
-          }, {
-            title: 'Pineapple'
-          }, {
-            title: 'Geek',
-            description: 'Coder geek'
-          }
-        ]);
+        var apple, geek, pineapple;
+        apple = new window.Store.Product({
+          title: 'Apple'
+        });
+        pineapple = new window.Store.Product({
+          title: 'Pineapple'
+        });
+        geek = new window.Store.Product({
+          title: 'Geek',
+          description: 'Coder geek'
+        });
+        spyOn(_this.app.catalog, 'get').andReturn([apple, pineapple, geek]);
         spyOn(_this.app, 'render');
         _this.app.filterCatalog('app');
-        return expect(_this.app.render).toHaveBeenCalledWith([
-          {
-            title: 'Apple'
-          }, {
-            title: 'Pineapple'
-          }
-        ]);
+        return expect(_this.app.render).toHaveBeenCalledWith([apple, pineapple]);
+      });
+    });
+  });
+
+  describe('Product', function() {
+    beforeEach(function() {
+      return _this.product = new window.Store.Product({
+        image: 'LoveJS.png',
+        title: 'Google',
+        description: 'The search engine!',
+        price: 25
       });
     });
     return describe('.isMatch', function() {
       it('should return true when title contains the text', function() {
         var match;
-        match = _this.app.isMatch({
-          title: 'Google'
-        }, 'Google');
+        match = _this.product.isMatch('Google');
         return expect(match).toBe(true);
       });
       it('should return true when title contains the text in a different case', function() {
         var match;
-        match = _this.app.isMatch({
-          title: 'Google'
-        }, 'gooGLe');
+        match = _this.product.isMatch('gOoGLe');
         return expect(match).toBe(true);
       });
-      xit('should return true when description contains the text', function() {});
+      it('should return true when description contains the text', function() {
+        var match;
+        match = _this.product.isMatch('search');
+        return expect(match).toBe(true);
+      });
       xit('should return true when description contains the text in a different case', function() {});
       return xit('should return false when neither title nor description contains the text', function() {});
     });

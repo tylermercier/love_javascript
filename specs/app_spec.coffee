@@ -24,6 +24,7 @@ describe "App", =>
 
   describe '.constructor', =>
     it 'should wire up filter catalog when search text is entered', =>
+      #Partial Mocking
       spyOn(@app, 'filterCatalog')
 
       @app.searchBox.val('gaga')
@@ -33,21 +34,40 @@ describe "App", =>
 
   describe '.filterCatalog', =>
     it 'should render the matched products given the search text', =>
-      spyOn(@app.catalog, 'get').andReturn [{title: 'Apple'}, {title: 'Pineapple'}, {title: 'Geek', description: 'Coder geek'}]
+      #partial mocking again
+      apple = new window.Store.Product title: 'Apple'
+      pineapple = new window.Store.Product title: 'Pineapple'
+      geek = new window.Store.Product title: 'Geek', description: 'Coder geek'
+      spyOn(@app.catalog, 'get').andReturn [apple, pineapple, geek]
 
       spyOn(@app, 'render')
+
       @app.filterCatalog('app')
-      expect(@app.render).toHaveBeenCalledWith([{title: 'Apple'}, {title: 'Pineapple'}])
+
+      expect(@app.render).toHaveBeenCalledWith([apple, pineapple])
+
+describe 'Product', =>
+
+  beforeEach =>
+    @product = new window.Store.Product
+      image: 'LoveJS.png'
+      title: 'Google'
+      description: 'The search engine!'
+      price: 25
 
   describe '.isMatch', =>
+    #testing logical paths
     it 'should return true when title contains the text', =>
-      match = @app.isMatch({title: 'Google'}, 'Google')
+      match = @product.isMatch('Google')
       expect(match).toBe(true)
 
     it 'should return true when title contains the text in a different case', =>
-      match = @app.isMatch({title: 'Google'}, 'gooGLe')
+      match = @product.isMatch('gOoGLe')
       expect(match).toBe(true)
 
-    xit 'should return true when description contains the text', =>
+    it 'should return true when description contains the text', =>
+      match = @product.isMatch('search')
+      expect(match).toBe(true)
+
     xit 'should return true when description contains the text in a different case', =>
     xit 'should return false when neither title nor description contains the text', =>

@@ -19,45 +19,54 @@ class window.Store.App
 
   filterCatalog: (textToSearch)->
     products = @catalog.get()
-    matchedProducts = _.select products, (product) => @isMatch(product, textToSearch)
+    matchedProducts = _.select products, (product) => product.isMatch(textToSearch)
 
     @render(matchedProducts)
 
-  isMatch: (product, textToSearch)->
-    lowerCasedTextToSearch = textToSearch.toLocaleLowerCase()
+class window.Store.Product
+  constructor: (info)->
+    @image = info.image
+    @title = info.title
+    @description = info.description
+    @price = info.price
 
-    product.title.toLocaleLowerCase().indexOf(lowerCasedTextToSearch) >= 0 ||
-    product.description.toLocaleLowerCase().indexOf(lowerCasedTextToSearch) >= 0
+  containsText: (string, textToSearch)->
+    string && string.toLocaleLowerCase().indexOf(textToSearch) >= 0
+
+  isMatch: (textToSearch)->
+    lowerCasedTextToSearch = textToSearch.toLocaleLowerCase()
+    @containsText(@title, lowerCasedTextToSearch) ||
+    @containsText(@description, lowerCasedTextToSearch)
 
 
 window.Store.catalog =
   get: ->
-    [
+    [ new window.Store.Product
         image: 'LoveJS.png'
         title: 'LoveJS'
         description: 'For programmers that love Javascript!'
         price: 25
-      ,
+      new window.Store.Product
         image: 'LoveJS.png'
         title: 'Geek'
         description: 'Geeks rule the world like it or not :)'
         price: 25
-      ,
+      new window.Store.Product
         image: 'LoveJS.png'
         title: 'LoveJS'
         description: 'For programmers that love Javascript!'
         price: 25
-      ,
+      new window.Store.Product
         image: 'LoveJS.png'
         title: 'Geek'
         description: 'Geeks rule the world like it or not :)'
         price: 25
-      ,
+      new window.Store.Product
         image: 'LoveJS.png'
         title: 'LoveJS'
         description: 'For programmers that love Javascript!'
         price: 25
-      ,
+      new window.Store.Product
         image: 'LoveJS.png'
         title: 'Geek'
         description: 'Geeks rule the world like it or not :)'
