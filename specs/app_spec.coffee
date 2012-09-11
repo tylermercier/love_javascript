@@ -1,20 +1,20 @@
 describe "App", =>
+
   beforeEach =>
     @app = new window.Store.App
       el: $('<div/>')
       template: (data) -> data # stub
       catalog:
-        get: -> # stub
+        getProducts: -> # stub
       searchBox: $('<input/>')
-
 
   describe '.load', =>
     it 'should load the catalog', =>
-      spyOn(@app.catalog, 'get')
+      spyOn(@app.catalog, 'getProducts')
 
       @app.load()
 
-      expect(@app.catalog.get).toHaveBeenCalled()
+      expect(@app.catalog.getProducts).toHaveBeenCalled()
 
   describe '.render', =>
     it 'should display the results in the view', =>
@@ -38,7 +38,7 @@ describe "App", =>
       apple = new window.Store.Product title: 'Apple'
       pineapple = new window.Store.Product title: 'Pineapple'
       geek = new window.Store.Product title: 'Geek', description: 'Coder geek'
-      spyOn(@app.catalog, 'get').andReturn [apple, pineapple, geek]
+      spyOn(@app.catalog, 'getProducts').andReturn [apple, pineapple, geek]
 
       spyOn(@app, 'render')
 
@@ -69,5 +69,10 @@ describe 'Product', =>
       match = @product.isMatch('search')
       expect(match).toBe(true)
 
-    xit 'should return true when description contains the text in a different case', =>
-    xit 'should return false when neither title nor description contains the text', =>
+    it 'should return true when description contains the text in a different case', =>
+      match = @product.isMatch('the')
+      expect(match).toBe(true)
+
+    it 'should return false when neither title nor description contains the text', =>
+      match = @product.isMatch('tango')
+      expect(match).toBe(false)

@@ -10,16 +10,16 @@
           return data;
         },
         catalog: {
-          get: function() {}
+          getProducts: function() {}
         },
         searchBox: $('<input/>')
       });
     });
     describe('.load', function() {
       return it('should load the catalog', function() {
-        spyOn(_this.app.catalog, 'get');
+        spyOn(_this.app.catalog, 'getProducts');
         _this.app.load();
-        return expect(_this.app.catalog.get).toHaveBeenCalled();
+        return expect(_this.app.catalog.getProducts).toHaveBeenCalled();
       });
     });
     describe('.render', function() {
@@ -49,7 +49,7 @@
           title: 'Geek',
           description: 'Coder geek'
         });
-        spyOn(_this.app.catalog, 'get').andReturn([apple, pineapple, geek]);
+        spyOn(_this.app.catalog, 'getProducts').andReturn([apple, pineapple, geek]);
         spyOn(_this.app, 'render');
         _this.app.filterCatalog('app');
         return expect(_this.app.render).toHaveBeenCalledWith([apple, pineapple]);
@@ -82,8 +82,16 @@
         match = _this.product.isMatch('search');
         return expect(match).toBe(true);
       });
-      xit('should return true when description contains the text in a different case', function() {});
-      return xit('should return false when neither title nor description contains the text', function() {});
+      it('should return true when description contains the text in a different case', function() {
+        var match;
+        match = _this.product.isMatch('the');
+        return expect(match).toBe(true);
+      });
+      return it('should return false when neither title nor description contains the text', function() {
+        var match;
+        match = _this.product.isMatch('tango');
+        return expect(match).toBe(false);
+      });
     });
   });
 

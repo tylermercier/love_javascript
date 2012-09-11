@@ -1,6 +1,7 @@
 window.Store ?= {}
 
 class window.Store.App
+
   constructor: (options) ->
     @el = options.el
     @template = options.template
@@ -11,36 +12,37 @@ class window.Store.App
       @filterCatalog(@searchBox.val())
 
   load: ->
-    data = @catalog.get()
-    @render(data)
+    products = @catalog.getProducts()
+    @render(products)
 
-  render: (data) ->
-    @el.html(@template(data))
+  render: (products) ->
+    @el.html(@template(products))
 
   filterCatalog: (textToSearch)->
-    products = @catalog.get()
+    products = @catalog.getProducts()
     matchedProducts = _.select products, (product) => product.isMatch(textToSearch)
 
     @render(matchedProducts)
 
 class window.Store.Product
-  constructor: (info)->
+
+  constructor: (info) ->
     @image = info.image
     @title = info.title
     @description = info.description
     @price = info.price
 
-  containsText: (string, textToSearch)->
+  containsText: (string, textToSearch) ->
     string && string.toLocaleLowerCase().indexOf(textToSearch) >= 0
 
-  isMatch: (textToSearch)->
+  isMatch: (textToSearch) ->
     lowerCasedTextToSearch = textToSearch.toLocaleLowerCase()
     @containsText(@title, lowerCasedTextToSearch) ||
     @containsText(@description, lowerCasedTextToSearch)
 
 
 window.Store.catalog =
-  get: ->
+  getProducts: ->
     [ new window.Store.Product
         image: 'LoveJS.png'
         title: 'LoveJS'

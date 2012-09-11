@@ -20,19 +20,19 @@
     }
 
     App.prototype.load = function() {
-      var data;
-      data = this.catalog.get();
-      return this.render(data);
+      var products;
+      products = this.catalog.getProducts();
+      return this.render(products);
     };
 
-    App.prototype.render = function(data) {
-      return this.el.html(this.template(data));
+    App.prototype.render = function(products) {
+      return this.el.html(this.template(products));
     };
 
     App.prototype.filterCatalog = function(textToSearch) {
       var matchedProducts, products,
         _this = this;
-      products = this.catalog.get();
+      products = this.catalog.getProducts();
       matchedProducts = _.select(products, function(product) {
         return product.isMatch(textToSearch);
       });
@@ -67,7 +67,7 @@
   })();
 
   window.Store.catalog = {
-    get: function() {
+    getProducts: function() {
       return [
         new window.Store.Product({
           image: 'LoveJS.png',
