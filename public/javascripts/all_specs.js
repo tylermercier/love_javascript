@@ -28,7 +28,38 @@
         return expect(_this.app.el.html()).toBe('hello world');
       });
     });
-    return describe('isMatch', function() {
+    describe('.constructor', function() {
+      return it('should wire up filter catalog when search text is entered', function() {
+        spyOn(_this.app, 'filterCatalog');
+        _this.app.searchBox.val('gaga');
+        _this.app.searchBox.keyup();
+        return expect(_this.app.filterCatalog).toHaveBeenCalledWith('gaga');
+      });
+    });
+    describe('.filterCatalog', function() {
+      return it('should render the matched products given the search text', function() {
+        spyOn(_this.app.catalog, 'get').andReturn([
+          {
+            title: 'Apple'
+          }, {
+            title: 'Pineapple'
+          }, {
+            title: 'Geek',
+            description: 'Coder geek'
+          }
+        ]);
+        spyOn(_this.app, 'render');
+        _this.app.filterCatalog('app');
+        return expect(_this.app.render).toHaveBeenCalledWith([
+          {
+            title: 'Apple'
+          }, {
+            title: 'Pineapple'
+          }
+        ]);
+      });
+    });
+    return describe('.isMatch', function() {
       it('should return true when title contains the text', function() {
         var match;
         match = _this.app.isMatch({
