@@ -1,32 +1,31 @@
 Intro
 
+Javascript testing
+  - Most popular language on github
+
 Why test javascript
-  - Ubiquitous
-    - Pretty much always have to work with javascript in a web project
-  - Popular
-    - Most popular language on github
-  - Improved code
-    - Same practices as any other piece of code, same benefits apply
-  - Automated verification
-    - Fast & consistent verification, it is consistent right?
-  - Documents functionality
-    - Great source of expected code behavior for the next developer
-  - Uncover bugs before QA
-    - Helps you remove bugs before you even commit
+  - Instant Gratification
+    - Know what you wrote works
+  - Uncover bugs
+    - Remove bugs before you even commit
+  - Better Design
+    - You become your own user
+    - Tackle design from more than one perspective
+  - Automation
+    - Fast, consistent validation
 
 Javascript testing
+  - Avoid DOM selectors in JS files
+    - use jQuery (library) objects instead
+  - Avoid savings state in the DOM
+    - interogating the DOM in general is going to problematic
   - Don't pollute the global namespace
     - Use Javascript namespaces
-  - Favor good reusable code
+  - Favor good patterns and practices
     - Module pattern for singletons, classes for objects
-  - Avoid saving state in the DOM
-    - Path to madness
-  - Stay out of the DOM
-    - If you don't need to do it in the DOM, don't
-  - General unit testing applies
-    - Everything that applies to your primary language!
     - Dependency inversion
     - Good OO practices such as, Single responsiblity principle & Low coupling
+    - Everything that applies to your primary language!
 
 Jasmine
   - Behavior-Driven Development framework
@@ -59,13 +58,20 @@ Jasmine Features
   - CI Reporting
     - We added a custom reporter for todays demonstration
 
-TravisCI
-  - TODO
+CoffeeScript Benefits
+  - Pit of success
+    - Natural shorthand of good JavaScript
+  - Terse, do more with less
+    - Often half as much code
+  - Closure scoping, var that = gone
+    - Less trouble for your mind
+  - Beautiful Valid JavaScript
+    - JavaScript produced looks good!
 
-Good Javascript
-  - Namespace your code
-    - Avoid polluting global namespace, i.e. window
-  - Use Module pattern for singletons
-    - Well documented and used pattern
-  - Use Object Oriented practices elsewhere
-    - Many different flavors
+CoffeeScript Challenges
+  - Learn another language
+    - Takes time
+  - Compile step
+    - Takes infrastructure
+  - Debugging
+    - Takes mental effort
