@@ -20,6 +20,7 @@ Javascript testing
   - Avoid savings state in the DOM
     - interogating the DOM in general is going to problematic
   - Don't pollute the global namespace
+    - Avoid global functions
     - Use Javascript namespaces
   - Favor good patterns and practices
     - Module pattern for singletons, classes for objects
@@ -30,12 +31,10 @@ Javascript testing
 Jasmine
   - Behavior-Driven Development framework
     - BDD is like TDD, but more natural
-  - No JavaScript dependencies
-    - Just jasmine
-  - Does not require a DOM
-    - Works on NodeJS, if you are into that sort of thing
   - Clean API
     - Pivotal Labs did a really good job building jasmine
+  - Includes everything you need
+    - No extra mocking or hacking
 
 Jasmine Example
   - Openning 'describe' block defines system under test
