@@ -75,29 +75,29 @@
           description: 'For programmers that love Javascript!',
           price: 25
         }), new window.Store.Product({
-          image: 'LoveJS.png',
+          image: 'Geek.png',
           title: 'Geek',
           description: 'Geeks rule the world like it or not :)',
           price: 25
         }), new window.Store.Product({
-          image: 'LoveJS.png',
-          title: 'LoveJS',
-          description: 'For programmers that love Javascript!',
+          image: 'Friday.png',
+          title: 'Friday',
+          description: 'Everyone loves fridays all year round',
           price: 25
         }), new window.Store.Product({
-          image: 'LoveJS.png',
-          title: 'Geek',
-          description: 'Geeks rule the world like it or not :)',
+          image: 'Huh.png',
+          title: 'Huh!',
+          description: 'Why so serious? Its not the end of the world.',
           price: 25
         }), new window.Store.Product({
-          image: 'LoveJS.png',
-          title: 'LoveJS',
-          description: 'For programmers that love Javascript!',
+          image: 'Mario.png',
+          title: 'Mario',
+          description: 'Are you a Mario? Forget Mario, who are you?',
           price: 25
         }), new window.Store.Product({
-          image: 'LoveJS.png',
-          title: 'Geek',
-          description: 'Geeks rule the world like it or not :)',
+          image: 'Pink.png',
+          title: 'Pink',
+          description: 'Love Pink? Join the millions out there!',
           price: 25
         })
       ];
